@@ -1345,7 +1345,7 @@ def main():
         return False
 
     try:
-        os.environ['PARALLEL_TESTING'] = '1'
+        os.environ['NUM_PARALLEL_PROCS'] = str(NUM_PROCS)
         for test in selected_tests_parallel:
             options_clone = copy.deepcopy(options)
             if test in USE_PYTEST_LIST:
@@ -1353,7 +1353,7 @@ def main():
             pool.apply_async(run_test_module, args=(test, test_directory, options_clone), callback=success_callback)
         pool.close()
         pool.join()
-        del os.environ['PARALLEL_TESTING']
+        del os.environ['NUM_PARALLEL_PROCS']
 
         if not options.continue_through_error and len(failure_messages) != 0:
             raise RuntimeError(
