@@ -327,6 +327,7 @@ CI_SERIAL_LIST = [
     'test_autocast',  # OOM
     'test_native_mha',  # OOM
     'test_module_hooks',  # OOM
+    'functorch/test_memory_efficient_fusion',  # OOM
 ]
 
 # A subset of our TEST list that validates PyTorch's ops, modules, and autograd function as expected
